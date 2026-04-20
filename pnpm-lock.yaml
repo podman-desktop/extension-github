@@ -24,8 +24,8 @@ importers:
         specifier: ^22.0.1
         version: 22.0.1
       '@podman-desktop/api':
-        specifier: 1.26.1
-        version: 1.26.1
+        specifier: 1.26.2
+        version: 1.26.2
       '@types/node':
         specifier: ^24
         version: 24.3.2
@@ -504,8 +504,8 @@ packages:
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
 
-  '@podman-desktop/api@1.26.1':
-    resolution: {integrity: sha512-mp6+UgOY/lzAy6ieeyWL9xPEdYiYEig5a5vLbmDFZu7/y/uihvxUQQ75VGZQeq37I2xpDztll95fY/NdypoZ1w==}
+  '@podman-desktop/api@1.26.2':
+    resolution: {integrity: sha512-LE8uo8PsyUG7gfrg0IW/Eib6SeZn717usJSwiuzpDMTSZJCTwlaXDeEADxMXLfsu6V9OKjZtgwJ7SAVzaeTV7A==}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     resolution: {integrity: sha512-YYe6aWruPZDtHNpwu7+qAHEMbQ/yRl6atqb/AhznLTnD3UY99Q1jE7ihLSahNWkF4EqRPVC4SiR4O0UkLK02tA==}
@@ -2959,7 +2959,7 @@ snapshots:
   '@pkgjs/parseargs@0.11.0':
     optional: true
 
-  '@podman-desktop/api@1.26.1': {}
+  '@podman-desktop/api@1.26.2': {}
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     optional: true
