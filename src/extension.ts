@@ -35,7 +35,13 @@ export async function activate(context: extensionApi.ExtensionContext): Promise<
 
   await providerSessionManager.registerAuthenticationProvider();
   await providerSessionManager.restoreSessions();
-  await providerSessionManager.createSessionEntry();
+
+  // Fire-and-forget: don't block activation on this call because
+  // getSession may show an interactive "Allow Access" dialog that
+  // exceeds the 20-second activation timeout.
+  providerSessionManager.createSessionEntry().catch((err: unknown) => {
+    console.error('Failed to create session entry', err);
+  });
 }
 
 // Deactivate the extension
