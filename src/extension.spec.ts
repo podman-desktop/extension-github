@@ -35,6 +35,7 @@ const extensionContextMcok: extensionApi.ExtensionContext = {
 
 test('Session manager created and used upon extension activation', async () => {
   vi.mocked(extensionApi.commands.registerCommand).mockReturnValue({ dispose: vi.fn() });
+  vi.mocked(ProviderSessionManager.prototype.createSessionEntry).mockResolvedValue();
   await activate(extensionContextMcok);
   expect(ProviderSessionManager).toHaveBeenCalledWith(extensionContextMcok);
   expect(ProviderSessionManager.prototype.registerAuthenticationProvider).toHaveBeenCalled();
