@@ -26,26 +26,30 @@ import { config } from './config';
 
 vi.mock(import('./auth-flows-helpers'));
 
-vi.mock('@octokit/rest', () => ({
-  Octokit: vi.fn(() => ({
-    rest: {
-      users: {
-        getAuthenticated: vi.fn(() => ({
-          data: {
-            id: 'id1',
-            login: 'user1',
-          },
-          headers: {
-            'x-oauth-scopes': 'admin:org, read:user, read:project',
-          },
-        })),
-      },
-    },
-  })),
+vi.mock(import('@octokit/rest'), () => ({
+  Octokit: vi.fn() as unknown as typeof Octokit,
 }));
 
 beforeEach(() => {
   vi.resetAllMocks();
+
+  vi.mocked(Octokit).mockImplementation(
+    class {
+      rest = {
+        users: {
+          getAuthenticated: vi.fn(() => ({
+            data: {
+              id: 'id1',
+              login: 'user1',
+            },
+            headers: {
+              'x-oauth-scopes': 'admin:org, read:user, read:project',
+            },
+          })),
+        },
+      };
+    } as unknown as typeof Octokit,
+  );
 });
 
 // taken from https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow

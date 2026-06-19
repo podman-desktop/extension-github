@@ -16,6 +16,7 @@
  * SPDX-License-Identifier: Apache-2.0
  ***********************************************************************/
 
+import { Octokit } from '@octokit/rest';
 import * as extensionApi from '@podman-desktop/api';
 import { afterEach, beforeEach, expect, test, vi } from 'vitest';
 
@@ -28,19 +29,8 @@ const fetchMock = vi.fn();
 const toStringMock = vi.fn().mockReturnValue('github/path/with/query');
 const withMock = vi.fn();
 
-vi.mock('@octokit/rest', () => ({
-  Octokit: vi.fn(() => ({
-    rest: {
-      users: {
-        getAuthenticated: vi.fn(() => ({
-          data: {
-            id: 'id1',
-            login: 'user1',
-          },
-        })),
-      },
-    },
-  })),
+vi.mock(import('@octokit/rest'), () => ({
+  Octokit: vi.fn() as unknown as typeof Octokit,
 }));
 
 // taken from https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#device-flow
@@ -60,6 +50,22 @@ const tokenResponseExample = {
 
 beforeEach(() => {
   vi.resetAllMocks();
+
+  vi.mocked(Octokit).mockImplementation(
+    class {
+      rest = {
+        users: {
+          getAuthenticated: vi.fn(() => ({
+            data: {
+              id: 'id1',
+              login: 'user1',
+            },
+          })),
+        },
+      };
+    } as unknown as typeof Octokit,
+  );
+
   global.fetch = fetchMock.mockResolvedValue({
     ok: true,
     json: vi.fn().mockResolvedValue(tokenResponseExample),
