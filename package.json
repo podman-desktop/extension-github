@@ -54,7 +54,7 @@
     "eslint-plugin-redundant-undefined": "^1.0.0",
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "eslint-plugin-sonarjs": "^4.1.0",
-    "eslint-plugin-unicorn": "^67.0.0",
+    "eslint-plugin-unicorn": "^68.0.0",
     "globals": "^17.6.0",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.61.1",
