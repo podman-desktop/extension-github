@@ -55,7 +55,7 @@
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "eslint-plugin-sonarjs": "^4.2.0",
     "eslint-plugin-unicorn": "^71.1.0",
-    "globals": "^17.8.0",
+    "globals": "^17.9.0",
     "typescript": "5.9.3",
     "typescript-eslint": "^8.65.0",
     "vite": "^8.2.0",
