@@ -18,7 +18,8 @@
 FROM registry.access.redhat.com/ubi9/nodejs-24:9.7-1766414990
 
 COPY package.json .
+COPY --chown=1001:0 pnpm-workspace.yaml /opt/app-root/extension-source/
 COPY pnpm-lock.yaml .
 
-RUN npm install --global pnpm@10 && \
-    pnpm --frozen-lockfile install
+RUN npm install --global pnpm@11 && \
+    CI=true pnpm --frozen-lockfile install
