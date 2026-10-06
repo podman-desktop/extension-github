@@ -9,6 +9,7 @@ overrides:
   esbuild@>=0.17.0 <0.28.1: '>=0.28.1'
   js-yaml@>=4.0.0 <5.0.0: '^4.3.1'
   js-yaml@>=5.0.0: '^5.3.0'
+  source-map-js@^1: '^1.2.2'
 
 allowBuilds:
   esbuild: true
