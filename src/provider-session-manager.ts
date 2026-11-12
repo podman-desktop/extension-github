@@ -48,7 +48,7 @@ export class ProviderSessionManager {
     let newAuthSession: extensionApi.AuthenticationSession | undefined;
 
     const result = await extensionApi.window.showInformationMessage(
-      'To authenticate to GitHub from Podman Dekstop you can either provide an exisiting Personal Access Token (PAT) with the nessecary permission or sign in to GitHub from the browser',
+      'To authenticate to GitHub from Podman Desktop you can either provide an existing Personal Access Token (PAT) with the necessary permissions or sign in to GitHub from the browser.',
       'Use PAT',
       'Use browser',
       'Cancel',

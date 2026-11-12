@@ -26,7 +26,7 @@ import { ProviderSessionManager } from './provider-session-manager';
 
 vi.mock(import('./provider-session-manager'));
 
-const extensionContextMcok: extensionApi.ExtensionContext = {
+const extensionContextMock: extensionApi.ExtensionContext = {
   subscriptions: {
     push: vi.fn(),
   },
@@ -36,8 +36,8 @@ const extensionContextMcok: extensionApi.ExtensionContext = {
 test('Session manager created and used upon extension activation', async () => {
   vi.mocked(extensionApi.commands.registerCommand).mockReturnValue({ dispose: vi.fn() });
   vi.mocked(ProviderSessionManager.prototype.createSessionEntry).mockResolvedValue();
-  await activate(extensionContextMcok);
-  expect(ProviderSessionManager).toHaveBeenCalledWith(extensionContextMcok);
+  await activate(extensionContextMock);
+  expect(ProviderSessionManager).toHaveBeenCalledWith(extensionContextMock);
   expect(ProviderSessionManager.prototype.registerAuthenticationProvider).toHaveBeenCalled();
   expect(ProviderSessionManager.prototype.restoreSessions).toHaveBeenCalled();
   expect(ProviderSessionManager.prototype.createSessionEntry).toHaveBeenCalled();
